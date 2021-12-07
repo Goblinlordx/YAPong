@@ -1,5 +1,6 @@
 node_modules
 .parcel-cache
 dist
+build
 
 yarn-error.log

@@ -1,10 +1,7 @@
 {
   "name": "YAPONG",
   "version": "1.0.0",
-  "main": "dist/index.js",
   "source": "src/index.ts",
-  "module": "dist/module.js",
-  "types": "dist/types.d.ts",
   "author": "Benjamin Michael Baldivia <goblinlordx@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -12,15 +9,25 @@
     "build": "parcel build"
   },
   "dependencies": {
-    "@swc/helpers": "^0.2.14",
     "phaser": "^3.55.2",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
     "@parcel/transformer-typescript-types": "^2.0.1",
+    "@swc/helpers": "^0.2.14",
     "parcel": "^2.0.1",
     "typescript": ">=3.0.0"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "frontend": {
+      "source": "src/web-demo/index.html",
+      "distDir": "build"
+    },
+    "module": {
+      "source": "src/index.ts",
+      "distDir": "dist"
+    }
+  }
 }
