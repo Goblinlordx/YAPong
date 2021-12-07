@@ -1,0 +1,1 @@
+{"mappings":"AAAA,UACA,QACA,CAEA,MAMA,qBAAA,CAFA,YAAA,CADA,MAAA,CAFA,iBAAA,CACA,KAAA,CAGA,WAEA","sources":["src/web-demo/style.css"],"sourcesContent":["html, body {\n  margin: 0;\n}\n\n#root {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background-color: #333;\n}\n"],"names":[],"version":3,"file":"index.48377369.css.map"}
