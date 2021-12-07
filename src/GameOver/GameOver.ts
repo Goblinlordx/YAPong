@@ -4,7 +4,6 @@ export class GameOver extends Phaser.Scene {
     super(key)
   }
   create() {
-    console.log('here')
     this.restartKey = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.SPACE
     )
