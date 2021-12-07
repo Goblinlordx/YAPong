@@ -1,8 +1,9 @@
 import Phaser from "phaser"
+import WebFontLoaderPlugin from "phaser3-rex-plugins/plugins/webfontloader-plugin.js"
 import { Game } from "./Game/Game"
 import { GlobalKeys } from "./GlobalKeys/GlobalKeys"
 import { Intro } from "./Intro/Intro"
-import WebFontLoaderPlugin from "phaser3-rex-plugins/plugins/webfontloader-plugin.js"
+import { GameOver } from "./GameOver/GameOver"
 
 export const game = (target: HTMLElement) =>
   new Phaser.Game({
@@ -17,7 +18,7 @@ export const game = (target: HTMLElement) =>
     physics: {
       default: "arcade",
     },
-    scene: [Intro, GlobalKeys, Game],
+    scene: [Intro, GlobalKeys, Game, GameOver],
     plugins: {
       global: [
         {

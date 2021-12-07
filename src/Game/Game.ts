@@ -14,6 +14,10 @@ export class Game extends Phaser.Scene {
     left: 0,
     right: 0,
   }
+  private lscore: any
+  private rscore: any
+
+  private gameover: boolean
 
   constructor(name = "game") {
     super(name)
@@ -36,6 +40,11 @@ export class Game extends Phaser.Scene {
     )
   }
   create() {
+    this.gameover = false
+    this.score = {
+      left: 0,
+      right: 0,
+    }
     this.sound.add("paddle-bounce")
     this.sound.add("wall-bounce")
     this.sound.add("score")
@@ -52,22 +61,28 @@ export class Game extends Phaser.Scene {
     this.resetBall()
 
     this.physics.world.on("worldbounds", (body, up, down, left, right) => {
+      if (this.gameover) return
+
       if (up || down) {
         this.sound.play("wall-bounce")
         return
       }
       this.sound.play("score")
       if (left) {
-        this.score.right++
+        this.rscore.setText((this.score.right += 1))
       } else if (right) {
-        this.score.left++
+        this.lscore.setText((this.score.left += 1))
       }
       if (
         (Math.abs(this.score.left - this.score.right) >= 2 &&
           this.score.left >= 11) ||
         this.score.right >= 11
-      )
-        console.log("game over")
+      ) {
+        this.gameover = true
+        this.lpaddle.destroy()
+        this.rpaddle.destroy()
+        this.game.scene.start("game-over")
+      }
 
       this.resetBall()
     })
@@ -88,10 +103,21 @@ export class Game extends Phaser.Scene {
       this.sound.play("paddle-bounce")
     })
 
+    this.lscore = this.add.text(80, 20, "0", {
+      fontFamily: "Prompt",
+      fontSize: "20px",
+    })
+    this.rscore = this.add.text(700, 20, "0", {
+      fontFamily: "Prompt",
+      fontSize: "20px",
+    })
+
     this.cursors = this.input.keyboard.createCursorKeys()
   }
 
   update() {
+    if (this.gameover) return
+
     const bvel = Math.ceil(
       (this.ball.body.velocity.x ** 2 + this.ball.body.velocity.y ** 2) **
         (1 / 2)
