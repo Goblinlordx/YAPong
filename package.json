@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/web-demo/index.html",
-    "build": "parcel build"
+    "build:gh": "parcel build --public-url /YAPong"
   },
   "dependencies": {
     "phaser": "^3.55.2",
