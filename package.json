@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "phaser": "^3.55.2",
-    "webfontloader": "^1.6.28"
+    "phaser3-rex-plugins": "^1.1.64"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
